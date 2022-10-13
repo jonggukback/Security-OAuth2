@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.security1.repository.UserRepository">
+
+	<select id="findByUsername" parameterType="String" resultType="User">
+		SELECT ID,USERNAME,PASSWORD,EMAIL,ROLE FROM USERS WHERE USERNAME = #{value}
+	</select>
+
+    <insert id="save" parameterType="User">
+        INSERT INTO users (ID, USERNAME, PASSWORD, EMAIL) 
+		values (USERS_SEQ.nextval, #{username}, #{password}, #{email})
+    </insert>
+    
+</mapper>
